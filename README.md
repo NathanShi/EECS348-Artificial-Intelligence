@@ -1,5 +1,5 @@
 # EECS348-Artificial-Intelligence
-Course project of EECS 348 - Artificial Intelligence
+Course project of Northwestern EECS 348 - Artificial Intelligence, this repo is mainly for tracking my solutions of different AI problems. If you are taking the same class, please do not directly copy the code here.
 
 ---
 
@@ -87,6 +87,7 @@ or database.
 ---
 
 ### 3 & 4 Logic and Inference
+**Finished with teammate Courtney Bankston**
 
 Description please check 
 - *Assignment 4_ A Knowledge Base for Block.pdf*, 
