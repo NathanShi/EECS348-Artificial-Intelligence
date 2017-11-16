@@ -1,0 +1,344 @@
+Yibing Shi and Courtney Bankston
+
+[0;32m
+=================== Loading in the data ===================[0m
+[0;32m
+=================== Setting up the Knowledge Base ===================[0m
+
+The KB contains 0 of facts and 0 of rules
+If you need to see in details, please call kb.printKB() to see facts and rules.
+
+[0;32m
+=================== Testing KB_Assert ===================[0m
+Assert a new rule : [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y'], Asserted : True
+Assert a new rule : [['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y'], Asserted : True
+Assert a new fact : ['inst', 'bigbox', 'box'], Asserted : True
+Assert a new fact : ['size', 'bigbox', 'big'], Asserted : True
+Assert a new fact : ['color', 'bigbox', 'red'], Asserted : True
+Infer a new rule : [['color', '?y', 'green']]->['contrasting', 'bigbox', '?y'], Asserted : False
+Assert a new fact : ['inst', 'littlebox', 'box'], Asserted : True
+Assert a new fact : ['size', 'littlebox', 'small'], Asserted : True
+Infer a new rule : [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'littlebox', '?y'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'littlebox', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'littlebox', 'bigbox'], Asserted : False
+Assert a new fact : ['color', 'littlebox', 'blue'], Asserted : True
+Assert a new fact : ['inst', 'pyramid1', 'pyramid'], Asserted : True
+Assert a new fact : ['size', 'pyramid1', 'small'], Asserted : True
+Infer a new rule : [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid1', '?y'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid1', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid1', 'bigbox'], Asserted : False
+Assert a new fact : ['color', 'pyramid1', 'blue'], Asserted : True
+Assert a new fact : ['inst', 'pyramid2', 'pyramid'], Asserted : True
+Assert a new fact : ['size', 'pyramid2', 'small'], Asserted : True
+Infer a new rule : [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid2', '?y'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid2', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid2', 'bigbox'], Asserted : False
+Assert a new fact : ['color', 'pyramid2', 'green'], Asserted : True
+Infer a new fact : ['contrasting', 'bigbox', 'pyramid2'], Asserted : False
+Assert a new fact : ['inst', 'pyramid3', 'pyramid'], Asserted : True
+Assert a new fact : ['size', 'pyramid3', 'small'], Asserted : True
+Infer a new rule : [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid3', '?y'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid3', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid3', 'bigbox'], Asserted : False
+Assert a new fact : ['color', 'pyramid3', 'green'], Asserted : True
+Infer a new fact : ['contrasting', 'bigbox', 'pyramid3'], Asserted : False
+['inst', 'bigbox', 'box']
+['size', 'bigbox', 'big']
+['color', 'bigbox', 'red']
+['inst', 'littlebox', 'box']
+['size', 'littlebox', 'small']
+['fits', 'littlebox', 'bigbox']
+['color', 'littlebox', 'blue']
+['inst', 'pyramid1', 'pyramid']
+['size', 'pyramid1', 'small']
+['fits', 'pyramid1', 'bigbox']
+['color', 'pyramid1', 'blue']
+['inst', 'pyramid2', 'pyramid']
+['size', 'pyramid2', 'small']
+['fits', 'pyramid2', 'bigbox']
+['color', 'pyramid2', 'green']
+['contrasting', 'bigbox', 'pyramid2']
+['inst', 'pyramid3', 'pyramid']
+['size', 'pyramid3', 'small']
+['fits', 'pyramid3', 'bigbox']
+['color', 'pyramid3', 'green']
+['contrasting', 'bigbox', 'pyramid3']
+[0;32m
+=================== Testing KB_ask ===================[0m
+
+Asking : ['inst', '?x', 'box']
+[['?x', 'bigbox']] [['?x', 'littlebox']]
+
+Asking : ['size', '?x', 'big']
+[['?x', 'bigbox']]
+
+Asking : ['color', '?x', 'red']
+[['?x', 'bigbox']]
+
+Asking : ['inst', 'littlebox', '?x']
+[['?x', 'box']]
+
+Asking : ['size', 'littlebox', '?x']
+[['?x', 'small']]
+
+Asking : ['color', 'littlebox', '?x']
+[['?x', 'blue']]
+
+Asking : ['inst', '?x', 'pyramid']
+[['?x', 'pyramid1']] [['?x', 'pyramid2']] [['?x', 'pyramid3']]
+[0;32m
+=================== Testing KB_ask and instantiate ===================[0m
+
+Asking : ['inst', '?x', 'box']
+Found: ['inst', 'bigbox', 'box'] ['inst', 'littlebox', 'box']
+
+Asking : ['size', '?x', 'big']
+Found: ['size', 'bigbox', 'big']
+
+Asking : ['color', '?x', 'red']
+Found: ['color', 'bigbox', 'red']
+
+Asking : ['inst', 'littlebox', '?x']
+Found: ['inst', 'littlebox', 'box']
+
+Asking : ['size', 'littlebox', '?x']
+Found: ['size', 'littlebox', 'small']
+
+Asking : ['color', 'littlebox', '?x']
+Found: ['color', 'littlebox', 'blue']
+
+Asking : ['inst', '?x', 'pyramid']
+Found: ['inst', 'pyramid1', 'pyramid'] ['inst', 'pyramid2', 'pyramid'] ['inst', 'pyramid3', 'pyramid']
+[0;32m
+=================== Testing retract ===================[0m
+
+The KB contains 21 of facts and 11 of rules
+If you need to see in details, please call kb.printKB() to see facts and rules.
+
+['color', 'bigbox', 'red'] is removed from facts in Knowledge Base
+[['color', '?y', 'green']]->['contrasting', 'bigbox', '?y'] is removed from rules in Knowledge Base
+['contrasting', 'bigbox', 'pyramid2'] is removed from facts in Knowledge Base
+['contrasting', 'bigbox', 'pyramid3'] is removed from facts in Knowledge Base
+['size', 'bigbox', 'big'] is removed from facts in Knowledge Base
+[['inst', 'bigbox', 'box']]->['fits', 'littlebox', 'bigbox'] is removed from rules in Knowledge Base
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid1', 'bigbox'] is removed from rules in Knowledge Base
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid2', 'bigbox'] is removed from rules in Knowledge Base
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid3', 'bigbox'] is removed from rules in Knowledge Base
+['fits', 'littlebox', 'bigbox'] is removed from facts in Knowledge Base
+['fits', 'pyramid1', 'bigbox'] is removed from facts in Knowledge Base
+['fits', 'pyramid2', 'bigbox'] is removed from facts in Knowledge Base
+['fits', 'pyramid3', 'bigbox'] is removed from facts in Knowledge Base
+The KB contains 13 of facts and 6 of rules
+If you need to see in details, please call kb.printKB() to see facts and rules.
+
+[0;32m
+=================== Asserting what we just retracted ===================[0m
+Assert a new fact : ['color', 'bigbox', 'red'], Asserted : True
+Infer a new rule : [['color', '?y', 'green']]->['contrasting', 'bigbox', '?y'], Asserted : False
+Infer a new fact : ['contrasting', 'bigbox', 'pyramid2'], Asserted : False
+Infer a new fact : ['contrasting', 'bigbox', 'pyramid3'], Asserted : False
+Assert a new fact : ['size', 'bigbox', 'big'], Asserted : True
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'littlebox', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'littlebox', 'bigbox'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid1', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid1', 'bigbox'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid2', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid2', 'bigbox'], Asserted : False
+Infer a new rule : [['inst', 'bigbox', 'box']]->['fits', 'pyramid3', 'bigbox'], Asserted : False
+Infer a new fact : ['fits', 'pyramid3', 'bigbox'], Asserted : False
+[0;32m
+=================== Testing against Why ===================[0m
+
+['inst', 'bigbox', 'box'] is in Knowledge Base
+=== printing the tree ===
+['inst', 'bigbox', 'box'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'bigbox', 'box']]
+
+['inst', 'littlebox', 'box'] is in Knowledge Base
+=== printing the tree ===
+['inst', 'littlebox', 'box'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'littlebox', 'box']]
+
+['size', 'littlebox', 'small'] is in Knowledge Base
+=== printing the tree ===
+['size', 'littlebox', 'small'] is a leaf node
+---Returning the Top Level List---
+[['size', 'littlebox', 'small']]
+
+['color', 'littlebox', 'blue'] is in Knowledge Base
+=== printing the tree ===
+['color', 'littlebox', 'blue'] is a leaf node
+---Returning the Top Level List---
+[['color', 'littlebox', 'blue']]
+
+['inst', 'pyramid1', 'pyramid'] is in Knowledge Base
+=== printing the tree ===
+['inst', 'pyramid1', 'pyramid'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'pyramid1', 'pyramid']]
+
+['size', 'pyramid1', 'small'] is in Knowledge Base
+=== printing the tree ===
+['size', 'pyramid1', 'small'] is a leaf node
+---Returning the Top Level List---
+[['size', 'pyramid1', 'small']]
+
+['color', 'pyramid1', 'blue'] is in Knowledge Base
+=== printing the tree ===
+['color', 'pyramid1', 'blue'] is a leaf node
+---Returning the Top Level List---
+[['color', 'pyramid1', 'blue']]
+
+['inst', 'pyramid2', 'pyramid'] is in Knowledge Base
+=== printing the tree ===
+['inst', 'pyramid2', 'pyramid'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'pyramid2', 'pyramid']]
+
+['size', 'pyramid2', 'small'] is in Knowledge Base
+=== printing the tree ===
+['size', 'pyramid2', 'small'] is a leaf node
+---Returning the Top Level List---
+[['size', 'pyramid2', 'small']]
+
+['color', 'pyramid2', 'green'] is in Knowledge Base
+=== printing the tree ===
+['color', 'pyramid2', 'green'] is a leaf node
+---Returning the Top Level List---
+[['color', 'pyramid2', 'green']]
+
+['inst', 'pyramid3', 'pyramid'] is in Knowledge Base
+=== printing the tree ===
+['inst', 'pyramid3', 'pyramid'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'pyramid3', 'pyramid']]
+
+['size', 'pyramid3', 'small'] is in Knowledge Base
+=== printing the tree ===
+['size', 'pyramid3', 'small'] is a leaf node
+---Returning the Top Level List---
+[['size', 'pyramid3', 'small']]
+
+['color', 'pyramid3', 'green'] is in Knowledge Base
+=== printing the tree ===
+['color', 'pyramid3', 'green'] is a leaf node
+---Returning the Top Level List---
+[['color', 'pyramid3', 'green']]
+
+['color', 'bigbox', 'red'] is in Knowledge Base
+=== printing the tree ===
+['color', 'bigbox', 'red'] is a leaf node
+---Returning the Top Level List---
+[['color', 'bigbox', 'red']]
+
+['contrasting', 'bigbox', 'pyramid2'] is in Knowledge Base
+=== printing the tree ===
+['contrasting', 'bigbox', 'pyramid2'] is a tree node
+	supported_by : [['color', 'pyramid2', 'green'], [['color', '?y', 'green']]->['contrasting', 'bigbox', '?y']]
+['color', 'pyramid2', 'green'] is a leaf node
+[['color', '?y', 'green']]->['contrasting', 'bigbox', '?y'] is a tree node
+	supported_by : [['color', 'bigbox', 'red'], [['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y']]
+['color', 'bigbox', 'red'] is a leaf node
+[['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['color', 'pyramid2', 'green'], ['color', 'bigbox', 'red'], [['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y']]
+
+['contrasting', 'bigbox', 'pyramid3'] is in Knowledge Base
+=== printing the tree ===
+['contrasting', 'bigbox', 'pyramid3'] is a tree node
+	supported_by : [['color', 'pyramid3', 'green'], [['color', '?y', 'green']]->['contrasting', 'bigbox', '?y']]
+['color', 'pyramid3', 'green'] is a leaf node
+[['color', '?y', 'green']]->['contrasting', 'bigbox', '?y'] is a tree node
+	supported_by : [['color', 'bigbox', 'red'], [['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y']]
+['color', 'bigbox', 'red'] is a leaf node
+[['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['color', 'pyramid3', 'green'], ['color', 'bigbox', 'red'], [['color', '?x', 'red'], ['color', '?y', 'green']]->['contrasting', '?x', '?y']]
+
+['size', 'bigbox', 'big'] is in Knowledge Base
+=== printing the tree ===
+['size', 'bigbox', 'big'] is a leaf node
+---Returning the Top Level List---
+[['size', 'bigbox', 'big']]
+
+['fits', 'littlebox', 'bigbox'] is in Knowledge Base
+=== printing the tree ===
+['fits', 'littlebox', 'bigbox'] is a tree node
+	supported_by : [['inst', 'bigbox', 'box'], [['inst', 'bigbox', 'box']]->['fits', 'littlebox', 'bigbox']]
+['inst', 'bigbox', 'box'] is a leaf node
+[['inst', 'bigbox', 'box']]->['fits', 'littlebox', 'bigbox'] is a tree node
+	supported_by : [['size', 'bigbox', 'big'], [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'littlebox', '?y']]
+['size', 'bigbox', 'big'] is a leaf node
+[['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'littlebox', '?y'] is a tree node
+	supported_by : [['size', 'littlebox', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+['size', 'littlebox', 'small'] is a leaf node
+[['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'bigbox', 'box'], ['size', 'bigbox', 'big'], ['size', 'littlebox', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+
+['fits', 'pyramid1', 'bigbox'] is in Knowledge Base
+=== printing the tree ===
+['fits', 'pyramid1', 'bigbox'] is a tree node
+	supported_by : [['inst', 'bigbox', 'box'], [['inst', 'bigbox', 'box']]->['fits', 'pyramid1', 'bigbox']]
+['inst', 'bigbox', 'box'] is a leaf node
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid1', 'bigbox'] is a tree node
+	supported_by : [['size', 'bigbox', 'big'], [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid1', '?y']]
+['size', 'bigbox', 'big'] is a leaf node
+[['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid1', '?y'] is a tree node
+	supported_by : [['size', 'pyramid1', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+['size', 'pyramid1', 'small'] is a leaf node
+[['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'bigbox', 'box'], ['size', 'bigbox', 'big'], ['size', 'pyramid1', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+
+['fits', 'pyramid2', 'bigbox'] is in Knowledge Base
+=== printing the tree ===
+['fits', 'pyramid2', 'bigbox'] is a tree node
+	supported_by : [['inst', 'bigbox', 'box'], [['inst', 'bigbox', 'box']]->['fits', 'pyramid2', 'bigbox']]
+['inst', 'bigbox', 'box'] is a leaf node
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid2', 'bigbox'] is a tree node
+	supported_by : [['size', 'bigbox', 'big'], [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid2', '?y']]
+['size', 'bigbox', 'big'] is a leaf node
+[['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid2', '?y'] is a tree node
+	supported_by : [['size', 'pyramid2', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+['size', 'pyramid2', 'small'] is a leaf node
+[['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'bigbox', 'box'], ['size', 'bigbox', 'big'], ['size', 'pyramid2', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+
+['fits', 'pyramid3', 'bigbox'] is in Knowledge Base
+=== printing the tree ===
+['fits', 'pyramid3', 'bigbox'] is a tree node
+	supported_by : [['inst', 'bigbox', 'box'], [['inst', 'bigbox', 'box']]->['fits', 'pyramid3', 'bigbox']]
+['inst', 'bigbox', 'box'] is a leaf node
+[['inst', 'bigbox', 'box']]->['fits', 'pyramid3', 'bigbox'] is a tree node
+	supported_by : [['size', 'bigbox', 'big'], [['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid3', '?y']]
+['size', 'bigbox', 'big'] is a leaf node
+[['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', 'pyramid3', '?y'] is a tree node
+	supported_by : [['size', 'pyramid3', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+['size', 'pyramid3', 'small'] is a leaf node
+[['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y'] is a leaf node
+---Returning the Top Level List---
+[['inst', 'bigbox', 'box'], ['size', 'bigbox', 'big'], ['size', 'pyramid3', 'small'], [['size', '?x', 'small'], ['size', '?y', 'big'], ['inst', '?y', 'box']]->['fits', '?x', '?y']]
+[0;32m
+=================== Testing against Ask PLus ===================[0m
+
+Asking about: [['color', '?y', 'red'], ['color', '?x', 'green']]
+Found 2 sets of bindings
+
+	Binding: [['?y', 'bigbox'], ['?x', 'pyramid2']]
+	Facts: ['color', 'bigbox', 'red'] ['color', 'pyramid2', 'green']
+
+	Binding: [['?y', 'bigbox'], ['?x', 'pyramid3']]
+	Facts: ['color', 'bigbox', 'red'] ['color', 'pyramid3', 'green']
+
+Asking about: [['color', '?y', '?x'], ['inst', '?y', 'box'], ['size', '?y', '?z']]
+Found 2 sets of bindings
+
+	Binding: [['?y', 'littlebox'], ['?x', 'blue'], ['?z', 'small']]
+	Facts: ['color', 'littlebox', 'blue'] ['inst', 'littlebox', 'box'] ['size', 'littlebox', 'small']
+
+	Binding: [['?y', 'bigbox'], ['?x', 'red'], ['?z', 'big']]
+	Facts: ['color', 'bigbox', 'red'] ['inst', 'bigbox', 'box'] ['size', 'bigbox', 'big']
